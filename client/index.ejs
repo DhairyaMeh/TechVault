@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechVault</title>
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="styles/global.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <script src="https://kit.fontawesome.com/9b7f16bc1d.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- back-ground Animation -->
+    <div class="back-animation">
+        <img src="images/tech-bg1.png" alt="tech background" height="195px" width="195px">
+    </div>
+    <main>
+
+        <%- include('include/navbar') %>
+
+            <section id="header" style="background: #252525;">
+                <div id="header-text">
+                    <h1>Latest & Greatest Tech Delivered To Your Door</h1>
+                    <h3>We bring the latest gadgets, software, and tech services directly to your doorstep with a focus
+                        on quality, convenience, and affordability. Explore a range of cutting-edge technology products.
+                    </h3>
+                    <button onclick="location.href='#search'">Shop Now</button>
+                </div>
+                <div id="header-img">
+                    <img src="images/tech_header.png" height="240px" width="240px">
+                </div>
+            </section>
+
+            <section id="categories">
+
+                <div class="category">
+                    <img src="images/laptop.png" alt="Laptop" height="140px" width="140px">
+                    <p>Laptop</p>
+                </div>
+                <div class="category">
+                    <img src="images/mobile.png" alt="Mobile" height="140px" width="140px">
+                    <p>Mobile</p>
+                </div>
+
+                <div class="category">
+                    <img src="images/speaker.png" alt="Speaker" height="140px" width="140px">
+                    <p>Speaker</p>
+                </div>
+                <div class="category">
+                    <img src="images/wearable.png" alt="Wearables" height="140px" width="140px">
+                    <p>Wearables</p>
+                </div>
+            </section>
+
+            <section id="search">
+                <div id="search-main">
+                    <div id="search-bar">
+                        <div id="location">
+                            <i class="fa-solid fa-location-dot"></i><span id="city">San Francisco</span>
+                        </div>
+                        <div id="search-side">
+                            <span id="drop-icon"><button class="btn-arrow"><i
+                                        class="fa-solid fa-caret-down"></i></button></span>
+                            <span id="search-divider">|</span>
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" placeholder="Search for tech items...">
+                        </div>
+                    </div>
+                    <div id="filter">
+                        <div class="filter-box"><span>Filter</span><i class="fa-solid fa-angle-down"></i></div>
+                        <div class="filter-box"><span>Ratings</span><i class="fa-solid fa-angle-down"></i></div>
+                        <div class="filter-box"><span>Category</span><i class="fa-solid fa-angle-down"></i></div>
+                        <div class="filter-box"><span>Price</span><i class="fa-solid fa-angle-down"></i></div>
+                    </div>
+                </div>
+                <div id="cards">
+                    <% for(let i of products){ %>
+                        <div class="card">
+                            <img src="<%= i.image %>">
+                            <div class="card-body">
+                                <div class="name">
+                                    <%= i.name %>
+                                </div>
+                                <div class="description">
+                                    <p>
+                                        <%= i.description %>
+                                    </p>
+                                </div>
+                                <div class="rating">5.0 <i class="fa-solid fa-star"></i></div>
+                                <div class="price">Rs. <%= i.price %> / unit</div>
+                                <div onclick="addToCart('<%= i.name %>')" class="add2cart" id="cart-button">Add to Cart
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
+            </section>
+
+            <section id="about">
+                <h1>About Us</h1>
+                <div id="about-body">
+
+                    <div id="about-text" align="justify">
+                        <h3>We are a leading platform bringing the best of technology to your doorstep. Our marketplace
+                            hosts a range of innovative gadgets and software for tech enthusiasts and professionals
+                            looking for quality and convenience.</h3>
+                        <h3>By supporting tech creators and vendors, we ensure top-notch products and services while
+                            boosting local tech economies. Join us in embracing the future of technology with TechVault!
+                        </h3>
+                    </div>
+                    <div id="about-img">
+                        <img src="images/team.png" alt="Tech Team" height="395px" width="395px">
+                    </div>
+                </div>
+            </section>
+
+            <%- include('include/footer') %>
+
+    </main>
+    <script type="text/javascript" src="javascript/main.js"></script>
+    <script type="text/javascript" src="javascript/navbar.js"></script>
+</body>
+
+</html>
